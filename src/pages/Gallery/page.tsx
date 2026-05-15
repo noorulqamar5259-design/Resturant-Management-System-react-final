@@ -29,43 +29,91 @@ export default function Gallery() {
   );
 
   return (
-    <>
+    <div className="min-h-screen bg-stone-50 transition-colors duration-500">
       <Navbar />
 
-      <div className="gallery-header">
-        <span className="section-label">Visual Journey</span>
-        <h1>Our Gallery</h1>
-        <div className="divider"></div>
-        <p className="gallery-header-text">From exquisite plating to our warm dining spaces — a glimpse into the world of La Bella Cucina.</p>
-      </div>
+      <header className="py-24 px-4 bg-white border-b border-stone-200 text-center">
+        <div className="max-w-4xl mx-auto">
+          <span className="text-amber-600 font-semibold tracking-widest uppercase text-sm">Visual Journey</span>
+          <h1 className="text-5xl md:text-6xl font-serif font-bold text-stone-900 mt-4 mb-6">Our Gallery</h1>
+          <div className="w-24 h-1 bg-amber-600 mx-auto rounded-full mb-8"></div>
+          <p className="text-xl text-stone-600 max-w-2xl mx-auto leading-relaxed">
+            From exquisite plating to our warm dining spaces — a glimpse into the world of La Bella Cucina.
+          </p>
+        </div>
+      </header>
 
-      <div className="page gallery-page">
-        <div className="filter-tabs" id="galleryFilterTabs">
-          {(['all','food','ambiance','team'] as GalleryCategory[]).map(cat => (
-            <button key={cat} data-filter={cat} className={activeFilter === cat ? 'active' : ''} onClick={() => setActiveFilter(cat)}>
-              {cat === 'all' ? 'All Photos' : cat === 'food' ? '🍽 Food' : cat === 'ambiance' ? '🕯 Ambiance' : '👨‍🍳 Our Team'}
+      <main className="max-w-7xl mx-auto py-16 px-4">
+        {/* Filter Tabs */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {(['all', 'food', 'ambiance', 'team'] as GalleryCategory[]).map(cat => (
+            <button
+              key={cat}
+              onClick={() => setActiveFilter(cat)}
+              className={`px-8 py-3 rounded-full font-bold transition-all ${
+                activeFilter === cat
+                  ? 'bg-amber-600 text-white shadow-lg shadow-amber-900/20'
+                  : 'bg-white text-stone-600 border border-stone-200 hover:bg-stone-50'
+              }`}
+            >
+              {cat === 'all' ? 'All Photos' : cat === 'food' ? '🍽️ Food' : cat === 'ambiance' ? '🕯️ Ambiance' : '👨‍🍳 Our Team'}
             </button>
           ))}
         </div>
 
-        <div className="gallery-container" id="galleryGrid">
+        {/* Gallery Grid */}
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
           {filtered.map(item => (
-            <div key={item.id} className="gallery-item" data-category={item.category} onClick={() => { setLightboxSrc(item.src); setLightboxAlt(item.alt); }}>
-              <img src={item.src} alt={item.alt} />
-              <div className="gallery-overlay"><span>{item.label}</span></div>
+            <div
+              key={item.id}
+              className="relative group overflow-hidden rounded-3xl cursor-zoom-in border border-stone-200 break-inside-avoid shadow-lg"
+              onClick={() => { setLightboxSrc(item.src); setLightboxAlt(item.alt); }}
+            >
+              <img
+                src={item.src}
+                alt={item.alt}
+                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                <span className="text-amber-400 text-xs font-bold uppercase tracking-widest mb-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  {item.category}
+                </span>
+                <h3 className="text-white text-xl font-serif font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+                  {item.label}
+                </h3>
+              </div>
             </div>
           ))}
         </div>
-      </div>
+      </main>
 
+      {/* Lightbox */}
       {lightboxSrc && (
-        <div className="lightbox open" id="lightbox" onClick={() => setLightboxSrc('')}>
-          <button className="lightbox-close" onClick={() => setLightboxSrc('')}>✕</button>
-          <img src={lightboxSrc} alt={lightboxAlt} id="lightboxImg" />
+        <div
+          className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-12 animate-fade-in"
+          onClick={() => setLightboxSrc('')}
+        >
+          <button
+            className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors p-4 z-[110]"
+            onClick={(e) => { e.stopPropagation(); setLightboxSrc(''); }}
+          >
+            <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+          </button>
+          <div className="relative max-w-5xl w-full h-full flex items-center justify-center">
+            <img
+              src={lightboxSrc}
+              alt={lightboxAlt}
+              className="max-w-full max-h-full object-contain rounded-xl shadow-2xl animate-zoom-in"
+              onClick={(e) => e.stopPropagation()}
+            />
+            <p className="absolute bottom-[-40px] text-white text-lg font-serif italic text-center w-full">
+              {lightboxAlt}
+            </p>
+          </div>
         </div>
       )}
 
       <Footer />
-    </>
+    </div>
   );
 }
