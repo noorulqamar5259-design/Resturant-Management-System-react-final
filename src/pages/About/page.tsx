@@ -10,15 +10,15 @@ export default function About() {
   ];
 
   return (
-    <div className="min-h-screen bg-stone-50 transition-colors duration-500">
+    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 transition-colors duration-500">
       <Navbar />
 
-      <header className="py-24 px-4 bg-white border-b border-stone-200 text-center">
+      <header className="py-24 px-4 bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800 text-center">
         <div className="max-w-4xl mx-auto">
           <span className="text-amber-600 font-semibold tracking-widest uppercase text-sm">Our Legacy</span>
-          <h1 className="text-5xl md:text-6xl font-serif font-bold text-stone-900 mt-4 mb-6">About La Bella Cucina</h1>
+          <h1 className="text-5xl md:text-6xl font-serif font-bold text-stone-900 dark:text-stone-100 mt-4 mb-6">About La Bella Cucina</h1>
           <div className="w-24 h-1 bg-amber-600 mx-auto rounded-full mb-8"></div>
-          <p className="text-xl text-stone-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-stone-600 dark:text-stone-400 max-w-2xl mx-auto leading-relaxed">
             Founded in 1982, we bring the authentic heart of Italy to your table with every dish we serve.
           </p>
         </div>
@@ -37,11 +37,11 @@ export default function About() {
             <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-amber-600/10 rounded-full blur-3xl"></div>
           </div>
           <div className="space-y-6">
-            <h2 className="text-4xl font-serif font-bold text-stone-900">Our Story</h2>
-            <p className="text-stone-600 leading-relaxed text-lg">
+            <h2 className="text-4xl font-serif font-bold text-stone-900 dark:text-stone-100">Our Story</h2>
+            <p className="text-stone-600 dark:text-stone-400 leading-relaxed text-lg">
               It started with a simple dream: to share the recipes passed down through generations of the Rossi family. Today, La Bella Cucina stands as a testament to traditional techniques and the power of fresh, seasonal ingredients.
             </p>
-            <p className="text-stone-600 leading-relaxed text-lg">
+            <p className="text-stone-600 dark:text-stone-400 leading-relaxed text-lg">
               We source our flour from Naples, our olives from Tuscany, and our passion from the soul of Rome. Every pasta is hand-rolled, every sauce is simmered for hours, and every guest is treated like family.
             </p>
           </div>
@@ -57,7 +57,7 @@ export default function About() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((member, i) => (
-              <div key={i} className="bg-white rounded-[2.5rem] overflow-hidden border border-stone-100 shadow-xl group hover:-translate-y-2 transition-all duration-500">
+              <div key={i} className="bg-white dark:bg-stone-900 rounded-[2.5rem] overflow-hidden border border-stone-100 dark:border-stone-800 shadow-xl group hover:-translate-y-2 transition-all duration-500">
                 <div className="h-64 overflow-hidden relative">
                   <img
                     src={member.img}
@@ -67,9 +67,9 @@ export default function About() {
                   <div className="absolute inset-0 bg-amber-600/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
                 <div className="p-8">
-                  <h3 className="text-xl font-bold text-stone-900 mb-1 group-hover:text-amber-600 transition-colors">{member.name}</h3>
+                  <h3 className="text-xl font-bold text-stone-900 dark:text-stone-100 mb-1 group-hover:text-amber-600 transition-colors">{member.name}</h3>
                   <p className="text-amber-600 font-bold text-sm uppercase tracking-wider mb-4">{member.role}</p>
-                  <p className="text-stone-500 text-sm leading-relaxed">
+                  <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed">
                     {member.bio}
                   </p>
                 </div>

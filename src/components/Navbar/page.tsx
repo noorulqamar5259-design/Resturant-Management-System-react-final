@@ -50,11 +50,11 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-stone-200 transition-colors duration-500">
+    <nav className="sticky top-0 z-50 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md border-b border-stone-200 dark:border-stone-800 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Left: Logo */}
-          <Link to="/" className="flex items-center gap-2 text-2xl font-serif font-bold text-amber-700">
+          <Link to="/" className="flex items-center gap-2 text-2xl font-serif font-bold text-amber-700 dark:text-amber-500">
             <span className="text-3xl">🍽</span>
             <span className="hidden sm:inline">La Bella Cucina</span>
           </Link>
@@ -77,7 +77,7 @@ export default function Navbar() {
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="flex items-center gap-2 text-sm uppercase tracking-widest text-stone-600 hover:text-amber-600 font-bold transition-all focus:outline-none"
+                className="flex items-center gap-2 text-sm uppercase tracking-widest text-stone-600 dark:text-stone-400 hover:text-amber-600 font-bold transition-all focus:outline-none"
               >
                 More 
                 <svg className={`w-4 h-4 transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -86,7 +86,7 @@ export default function Navbar() {
               </button>
 
               {dropdownOpen && (
-                <div className="absolute right-0 mt-6 w-64 bg-white rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-stone-100 py-6 px-2 animate-zoom-in">
+                <div className="absolute right-0 mt-6 w-64 bg-white dark:bg-stone-900 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-stone-100 dark:border-stone-800 py-6 px-2 animate-zoom-in">
                   <div className="space-y-6">
                     {secondaryLinks.map((cat, i) => (
                       <div key={i} className="space-y-2">
@@ -97,7 +97,7 @@ export default function Navbar() {
                               key={link.path}
                               to={link.path}
                               onClick={() => setDropdownOpen(false)}
-                              className={`flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-stone-50 transition-all ${isActive(link.path)}`}
+                              className={`flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-stone-50 dark:hover:bg-stone-800 transition-all ${isActive(link.path)}`}
                             >
                               <span className="text-base">{link.icon}</span>
                               <span className="text-sm font-semibold">{link.name}</span>
@@ -117,12 +117,12 @@ export default function Navbar() {
             {/* Cart Toggle */}
             <Link 
               to="/cart"
-              className="p-3 rounded-2xl bg-stone-100 text-stone-800 hover:ring-2 hover:ring-amber-500 transition-all relative group"
+              className="p-3 rounded-2xl bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-200 hover:ring-2 hover:ring-amber-500 transition-all relative group"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-amber-600 text-white text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-white opacity-0 group-hover:opacity-100 transition-opacity">0</span>
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-amber-600 text-white text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-white dark:border-stone-800 opacity-0 group-hover:opacity-100 transition-opacity">0</span>
             </Link>
 
             {/* Login Button */}
@@ -136,7 +136,7 @@ export default function Navbar() {
             {/* Theme Toggle */}
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-3 rounded-2xl bg-stone-100 text-stone-800 transition-all hover:ring-2 hover:ring-amber-500 ml-1"
+              className="p-3 rounded-2xl bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-200 transition-all hover:ring-2 hover:ring-amber-500 ml-1"
             >
               {theme === 'dark' ? '☀️' : '🌙'}
             </button>
@@ -144,19 +144,19 @@ export default function Navbar() {
 
           {/* Mobile Buttons */}
           <div className="lg:hidden flex items-center gap-2">
-            <Link to="/cart" className="p-2 rounded-xl bg-stone-100 text-stone-800">
+            <Link to="/cart" className="p-2 rounded-xl bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-200">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
             </Link>
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-2 rounded-xl bg-stone-100 text-stone-800"
+              className="p-2 rounded-xl bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-200"
             >
               {theme === 'dark' ? '☀️' : '🌙'}
             </button>
             <button
-              className="p-2 text-stone-600"
+              className="p-2 text-stone-600 dark:text-stone-400"
               onClick={() => setMenuOpen(!menuOpen)}
             >
               {menuOpen ? (
@@ -171,7 +171,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-white border-b border-stone-200 py-8 px-6 animate-fade-in overflow-y-auto max-h-[85vh]">
+        <div className="lg:hidden bg-white dark:bg-stone-950 border-b border-stone-200 dark:border-stone-800 py-8 px-6 animate-fade-in overflow-y-auto max-h-[85vh]">
           <div className="space-y-8">
             <div className="grid grid-cols-2 gap-4">
               {primaryLinks.map((link) => (
@@ -179,7 +179,7 @@ export default function Navbar() {
                   key={link.path}
                   to={link.path}
                   onClick={() => setMenuOpen(false)}
-                  className={`flex flex-col items-center justify-center p-6 rounded-3xl bg-stone-50 border border-stone-100 ${isActive(link.path)}`}
+                  className={`flex flex-col items-center justify-center p-6 rounded-3xl bg-stone-50 dark:bg-stone-900 border border-stone-100 dark:border-stone-800 ${isActive(link.path)}`}
                 >
                   <span className="text-lg font-bold">{link.name}</span>
                 </Link>
@@ -195,7 +195,7 @@ export default function Navbar() {
                       key={link.path}
                       to={link.path}
                       onClick={() => setMenuOpen(false)}
-                      className={`flex items-center gap-4 p-4 rounded-2xl bg-stone-50 ${isActive(link.path)}`}
+                      className={`flex items-center gap-4 p-4 rounded-2xl bg-stone-50 dark:bg-stone-900 ${isActive(link.path)}`}
                     >
                       <span className="text-2xl">{link.icon}</span>
                       <span className="text-lg font-bold">{link.name}</span>

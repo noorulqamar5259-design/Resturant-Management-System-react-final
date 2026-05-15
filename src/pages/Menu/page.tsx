@@ -33,15 +33,15 @@ export default function Menu() {
   ];
 
   return (
-    <div className="min-h-screen bg-stone-50 transition-colors duration-500">
+    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 transition-colors duration-500">
       <Navbar />
 
-      <header className="py-20 px-4 bg-white border-b border-stone-200 text-center">
+      <header className="py-20 px-4 bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800 text-center">
         <div className="max-w-4xl mx-auto">
           <span className="text-amber-600 font-semibold tracking-widest uppercase text-sm">Discover the Taste</span>
-          <h1 className="text-5xl md:text-6xl font-serif font-bold text-stone-900 mt-4 mb-6">Our Menu</h1>
+          <h1 className="text-5xl md:text-6xl font-serif font-bold text-stone-900 dark:text-stone-100 mt-4 mb-6">Our Menu</h1>
           <div className="w-24 h-1 bg-amber-600 mx-auto rounded-full mb-8"></div>
-          <p className="text-xl text-stone-600 max-w-2xl mx-auto leading-relaxed italic">
+          <p className="text-xl text-stone-600 dark:text-stone-400 max-w-2xl mx-auto leading-relaxed italic">
             "Every dish is crafted fresh daily using the finest seasonal ingredients."
           </p>
         </div>
@@ -57,7 +57,7 @@ export default function Menu() {
               className={`flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all ${
                 activeFilter === cat.id
                   ? 'bg-amber-600 text-white shadow-lg shadow-amber-900/20 scale-105'
-                  : 'bg-white text-stone-600 hover:bg-stone-100 border border-stone-200'
+                  : 'bg-white dark:bg-stone-900 text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 border border-stone-200 dark:border-stone-800'
               }`}
             >
               <span>{cat.icon}</span>
@@ -71,7 +71,7 @@ export default function Menu() {
           {filtered.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-3xl overflow-hidden border border-stone-100 group hover:shadow-2xl transition-all duration-500 flex flex-col"
+              className="bg-white dark:bg-stone-900 rounded-3xl overflow-hidden border border-stone-100 dark:border-stone-800 group hover:shadow-2xl transition-all duration-500 flex flex-col"
             >
               <div className="h-56 overflow-hidden relative">
                 <img
@@ -87,15 +87,15 @@ export default function Menu() {
               </div>
               <div className="p-6 flex-1 flex flex-col">
                 <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-xl font-bold text-stone-900 leading-tight group-hover:text-amber-600 transition-colors">
+                  <h3 className="text-xl font-bold text-stone-900 dark:text-stone-100 leading-tight group-hover:text-amber-600 transition-colors">
                     {item.name}
                   </h3>
                   <span className="text-amber-600 font-bold text-lg">{item.price}</span>
                 </div>
-                <p className="text-stone-600 text-sm leading-relaxed flex-1">
+                <p className="text-stone-600 dark:text-stone-400 text-sm leading-relaxed flex-1">
                   {item.desc}
                 </p>
-                <button className="mt-6 w-full py-3 bg-stone-50 hover:bg-amber-600 hover:text-white text-stone-600 rounded-xl font-bold text-sm transition-all border border-stone-200">
+                <button className="mt-6 w-full py-3 bg-stone-50 dark:bg-stone-800 hover:bg-amber-600 hover:text-white text-stone-600 dark:text-stone-300 rounded-xl font-bold text-sm transition-all border border-stone-200 dark:border-stone-700">
                   Add to Cart
                 </button>
               </div>

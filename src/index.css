@@ -1,97 +1,21 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
 
 :root {
-  /* Light Mode Variables - Pure White Background */
-  --bg-primary: #ffffff;
-  --bg-secondary: #ffffff;
-  --text-primary: #1c1917;
-  --text-secondary: #44403c;
-  --border-main: #e7e5e4;
-  --accent-amber: #d97706;
-  
+  @apply bg-white text-stone-900;
   --font-serif: 'Playfair Display', serif;
   --font-sans: 'Inter', sans-serif;
 }
 
-html.dark {
-  /* Dark Mode Variables - Kept Exactly the same */
-  --bg-primary: #0c0a09;
-  --bg-secondary: #1c1917;
-  --text-primary: #f5f5f4;
-  --text-secondary: #d6d3d1;
-  --border-main: #292524;
-  --accent-amber: #fbbf24;
+.dark {
+  @apply bg-stone-950 text-stone-100;
+}
+
+body {
+  @apply font-sans transition-colors duration-500;
 }
 
 @theme {
-  /* Remap Tailwind core colors to our theme variables for automatic switching */
-  --color-white: var(--bg-secondary);
-  --color-stone-50: var(--bg-primary);
-  --color-stone-100: var(--border-main);
-  --color-stone-200: var(--border-main);
-  --color-stone-400: var(--text-secondary);
-  --color-stone-500: var(--text-secondary);
-  --color-stone-600: var(--text-secondary);
-  --color-stone-700: var(--text-primary);
-  --color-stone-800: var(--text-primary);
-  --color-stone-900: var(--text-primary);
-  --color-stone-950: var(--bg-primary);
-  --color-amber-50: var(--bg-secondary);
-  --color-amber-600: var(--accent-amber);
-  
-  --font-serif: var(--font-serif);
-  --font-sans: var(--font-sans);
-
-  /* Custom Animations */
-  --animate-zoom-in: zoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  --animate-fade-in: fadeIn 0.4s ease-out forwards;
-
-  @keyframes zoomIn {
-    from { opacity: 0; transform: scale(0.95) translateY(10px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-}
-
-@layer base {
-  * {
-    transition-property: background-color, border-color, color, box-shadow;
-    transition-timing-function: ease;
-    transition-duration: 400ms;
-  }
-
-  body {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
-  }
-
-  /* Force dark mode overrides for core utility classes to ensure perfect theme switching */
-  html.dark .bg-white { background-color: var(--bg-secondary) !important; }
-  html.dark .bg-stone-50 { background-color: var(--bg-primary) !important; }
-  html.dark .bg-stone-100 { background-color: var(--border-main) !important; }
-  html.dark .bg-stone-200 { background-color: var(--border-main) !important; }
-  html.dark .bg-amber-50 { background-color: var(--bg-secondary) !important; }
-  html.dark .text-stone-900 { color: var(--text-primary) !important; }
-  html.dark .text-stone-800 { color: var(--text-primary) !important; }
-  html.dark .text-stone-700 { color: var(--text-primary) !important; }
-  html.dark .text-stone-600 { color: var(--text-secondary) !important; }
-  html.dark .text-stone-500 { color: var(--text-secondary) !important; }
-  html.dark .border-stone-100 { border-color: var(--border-main) !important; }
-  html.dark .border-stone-200 { border-color: var(--border-main) !important; }
-
-  /* Scrollbar customization */
-  ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-track { background: var(--bg-primary); }
-  ::-webkit-scrollbar-thumb {
-    background: var(--border-main);
-    border-radius: 10px;
-  }
-  ::-webkit-scrollbar-thumb:hover { background: var(--accent-amber); }
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
 }

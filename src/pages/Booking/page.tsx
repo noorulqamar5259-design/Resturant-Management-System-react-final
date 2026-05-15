@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import Navbar from '../../components/Navbar/page';
 import Footer from '../../components/Footer/page';
 
@@ -27,7 +27,7 @@ export default function Booking() {
   const [bookings, setBookings] = useState<Booking[]>(initialBookings);
   const [toast, setToast] = useState('');
 
-  function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const newBooking: Booking = {
       name: `${firstName} ${lastName}`, date, time, guests, occasion: occasion || '—', status: 'Confirmed'
@@ -45,90 +45,76 @@ export default function Booking() {
     'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400';
 
   return (
-    <div className="min-h-screen bg-stone-50 transition-colors duration-500">
+    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 flex flex-col transition-colors duration-500">
       <Navbar />
 
-      <header className="py-24 px-4 bg-white border-b border-stone-200 text-center">
+      <header className="py-24 px-4 bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800 text-center">
         <div className="max-w-4xl mx-auto">
-          <span className="text-amber-600 font-semibold tracking-widest uppercase text-sm">Make a Reservation</span>
-          <h1 className="text-5xl md:text-6xl font-serif font-bold text-stone-900 mt-4 mb-6">Book Your Table</h1>
+          <span className="text-amber-600 font-semibold tracking-widest uppercase text-sm">Join Our Table</span>
+          <h1 className="text-5xl md:text-6xl font-serif font-bold text-stone-900 dark:text-stone-100 mt-4 mb-6">Make a Reservation</h1>
           <div className="w-24 h-1 bg-amber-600 mx-auto rounded-full mb-8"></div>
-          <p className="text-xl text-stone-600 max-w-2xl mx-auto leading-relaxed">
-            Secure your seat for a memorable dining experience. We confirm all reservations within 2 hours.
+          <p className="text-xl text-stone-600 dark:text-stone-400 max-w-2xl mx-auto leading-relaxed italic">
+            "Experience authentic Italian hospitality in the heart of the city."
           </p>
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto py-16 px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Reservation Form */}
-          <div className="lg:col-span-2 bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-stone-100">
-            <h2 className="text-3xl font-serif font-bold text-stone-900 mb-8">Reservation Details</h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-stone-700 ml-1">First Name</label>
-                  <input type="text" value={firstName} onChange={e => setFirstName(e.target.value)} className="w-full px-6 py-4 rounded-2xl bg-stone-50 border-none focus:ring-2 focus:ring-amber-500" placeholder="John" required />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-stone-700 ml-1">Last Name</label>
-                  <input type="text" value={lastName} onChange={e => setLastName(e.target.value)} className="w-full px-6 py-4 rounded-2xl bg-stone-50 border-none focus:ring-2 focus:ring-amber-500" placeholder="Doe" required />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-stone-700 ml-1">Email Address</label>
-                  <input type="email" value={email} onChange={e => setEmail(e.target.value)} className="w-full px-6 py-4 rounded-2xl bg-stone-50 border-none focus:ring-2 focus:ring-amber-500" placeholder="john@example.com" required />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-stone-700 ml-1">Phone Number</label>
-                  <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} className="w-full px-6 py-4 rounded-2xl bg-stone-50 border-none focus:ring-2 focus:ring-amber-500" placeholder="+1 (555) 000-0000" />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-stone-700 ml-1">Date</label>
-                  <input type="date" value={date} onChange={e => setDate(e.target.value)} className="w-full px-6 py-4 rounded-2xl bg-stone-50 border-none focus:ring-2 focus:ring-amber-500" required />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-stone-700 ml-1">Time</label>
-                  <select value={time} onChange={e => setTime(e.target.value)} className="w-full px-6 py-4 rounded-2xl bg-stone-50 border-none focus:ring-2 focus:ring-amber-500 appearance-none cursor-pointer" required>
-                    <option value="">Select time</option>
-                    {['12:00 PM', '1:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM'].map(t => <option key={t} value={t}>{t}</option>)}
-                  </select>
-                </div>
-                <div className="space-y-2 col-span-2 md:col-span-1">
-                  <label className="text-sm font-bold text-stone-700 ml-1">Guests</label>
-                  <select value={guests} onChange={e => setGuests(e.target.value)} className="w-full px-6 py-4 rounded-2xl bg-stone-50 border-none focus:ring-2 focus:ring-amber-500 appearance-none cursor-pointer" required>
-                    <option value="">Select guests</option>
-                    {[1, 2, 3, 4, 5, 6, '7+'].map(g => <option key={g} value={g}>{g} Guest{g !== 1 && 's'}</option>)}
-                  </select>
-                </div>
-              </div>
-
+        <div className="grid gap-12 lg:grid-cols-[1.35fr_0.65fr]">
+          <form onSubmit={handleSubmit} className="space-y-10 bg-white rounded-[2.5rem] p-10 shadow-2xl border border-stone-100">
+            <div className="grid gap-6 sm:grid-cols-2">
               <div className="space-y-2">
-                <label className="text-sm font-bold text-stone-700 ml-1">Special Occasion</label>
-                <select value={occasion} onChange={e => setOccasion(e.target.value)} className="w-full px-6 py-4 rounded-2xl bg-stone-50 border-none focus:ring-2 focus:ring-amber-500 appearance-none cursor-pointer">
-                  <option value="">None</option>
-                  <option value="Birthday 🎂">🎂 Birthday</option>
-                  <option value="Anniversary 💍">💍 Anniversary</option>
-                  <option value="Romantic Date ❤️">❤️ Romantic Date</option>
-                  <option value="Business 💼">💼 Business Dinner</option>
-                </select>
+                <label className="text-sm font-bold text-stone-700 ml-1">First Name</label>
+                <input value={firstName} onChange={e => setFirstName(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none" placeholder="First name" />
               </div>
-
               <div className="space-y-2">
-                <label className="text-sm font-bold text-stone-700 ml-1">Special Requests</label>
-                <textarea value={requests} onChange={e => setRequests(e.target.value)} className="w-full px-6 py-4 rounded-2xl bg-stone-50 border-none focus:ring-2 focus:ring-amber-500 h-32 resize-none" placeholder="Dietary requirements, seating preferences, allergies..." />
+                <label className="text-sm font-bold text-stone-700 ml-1">Last Name</label>
+                <input value={lastName} onChange={e => setLastName(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none" placeholder="Last name" />
               </div>
+            </div>
 
-              <button type="submit" className="w-full py-5 bg-amber-600 hover:bg-amber-700 text-white rounded-2xl font-bold text-lg shadow-xl shadow-amber-900/20 transition-all transform active:scale-95">
-                Confirm Reservation
-              </button>
-            </form>
-          </div>
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-stone-700 ml-1">Email</label>
+                <input type="email" value={email} onChange={e => setEmail(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none" placeholder="you@example.com" />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-stone-700 ml-1">Phone</label>
+                <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none" placeholder="(123) 456-7890" />
+              </div>
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-stone-700 ml-1">Date</label>
+                <input type="date" value={date} onChange={e => setDate(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none" />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-stone-700 ml-1">Time</label>
+                <input type="time" value={time} onChange={e => setTime(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none" />
+              </div>
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-stone-700 ml-1">Guests</label>
+                <input type="number" min="1" value={guests} onChange={e => setGuests(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none" placeholder="Number of guests" />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-stone-700 ml-1">Occasion</label>
+                <input value={occasion} onChange={e => setOccasion(e.target.value)} className="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none" placeholder="Anniversary, Birthday, etc." />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-sm font-bold text-stone-700 ml-1">Special Requests</label>
+              <textarea value={requests} onChange={e => setRequests(e.target.value)} className="w-full px-6 py-4 rounded-2xl bg-stone-50 border border-stone-200 focus:ring-2 focus:ring-amber-500 h-32 resize-none outline-none" placeholder="Dietary requirements, seating preferences, allergies..." />
+            </div>
+
+            <button type="submit" className="w-full py-5 bg-amber-600 hover:bg-amber-700 text-white rounded-2xl font-bold text-lg shadow-xl shadow-amber-900/20 transition-all transform active:scale-95">
+              Confirm Reservation
+            </button>
+          </form>
 
           {/* Sidebar / Info */}
           <div className="space-y-8">

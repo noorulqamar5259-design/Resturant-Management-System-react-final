@@ -34,13 +34,13 @@ export default function Cart() {
   const total = subtotal + tax;
 
   return (
-    <div className="min-h-screen bg-stone-50 flex flex-col transition-colors duration-500">
+    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 flex flex-col transition-colors duration-500">
       <Navbar />
 
       <main className="flex-1 max-w-7xl mx-auto w-full py-16 px-4">
         <div className="text-center mb-16">
           <span className="text-amber-600 font-bold tracking-widest uppercase text-xs">Your Selection</span>
-          <h1 className="text-5xl font-serif font-bold text-stone-900 mt-2">Shopping Cart</h1>
+          <h1 className="text-5xl font-serif font-bold text-stone-900 dark:text-stone-100 mt-2">Shopping Cart</h1>
           <div className="w-16 h-1 bg-amber-600 mx-auto rounded-full mt-6"></div>
         </div>
 
@@ -49,21 +49,21 @@ export default function Cart() {
           <div className="lg:col-span-2 space-y-6">
             {items.length > 0 ? (
               items.map(item => (
-                <div key={item.id} className="bg-white rounded-[2rem] p-6 shadow-xl border border-stone-100 flex flex-col md:flex-row items-center gap-8 group">
+                <div key={item.id} className="bg-white dark:bg-stone-900 rounded-[2rem] p-6 shadow-xl border border-stone-100 dark:border-stone-800 flex flex-col md:flex-row items-center gap-8 group">
                   <div className="w-32 h-32 rounded-2xl overflow-hidden shrink-0">
                     <img src={item.img} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   </div>
                   <div className="flex-1 text-center md:text-left">
-                    <h3 className="text-xl font-bold text-stone-900">{item.name}</h3>
+                    <h3 className="text-xl font-bold text-stone-900 dark:text-stone-100">{item.name}</h3>
                     <p className="text-amber-600 font-bold mt-1">${item.price.toFixed(2)}</p>
                   </div>
-                  <div className="flex items-center gap-4 bg-stone-50 p-2 rounded-xl">
-                    <button onClick={() => updateQty(item.id, -1)} className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-stone-200 text-stone-600 transition-colors">-</button>
-                    <span className="w-8 text-center font-bold">{item.qty}</span>
-                    <button onClick={() => updateQty(item.id, 1)} className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-stone-200 text-stone-600 transition-colors">+</button>
+                  <div className="flex items-center gap-4 bg-stone-50 dark:bg-stone-800 p-2 rounded-xl">
+                    <button onClick={() => updateQty(item.id, -1)} className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-600 dark:text-stone-400 transition-colors">-</button>
+                    <span className="w-8 text-center font-bold dark:text-stone-100">{item.qty}</span>
+                    <button onClick={() => updateQty(item.id, 1)} className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-600 dark:text-stone-400 transition-colors">+</button>
                   </div>
                   <div className="text-center md:text-right min-w-[100px]">
-                    <p className="text-xl font-bold text-stone-900">${(item.price * item.qty).toFixed(2)}</p>
+                    <p className="text-xl font-bold text-stone-900 dark:text-stone-100">${(item.price * item.qty).toFixed(2)}</p>
                     <button onClick={() => removeItem(item.id)} className="text-red-500 text-sm font-bold hover:underline mt-2">Remove</button>
                   </div>
                 </div>
@@ -79,19 +79,19 @@ export default function Cart() {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-[2.5rem] p-10 shadow-2xl border border-stone-100 sticky top-24">
-              <h2 className="text-2xl font-serif font-bold text-stone-900 mb-8">Order Summary</h2>
+            <div className="bg-white dark:bg-stone-900 rounded-[2.5rem] p-10 shadow-2xl border border-stone-100 dark:border-stone-800 sticky top-24">
+              <h2 className="text-2xl font-serif font-bold text-stone-900 dark:text-stone-100 mb-8">Order Summary</h2>
               <div className="space-y-4 mb-8">
-                <div className="flex justify-between text-stone-600">
+                <div className="flex justify-between text-stone-600 dark:text-stone-400">
                   <span>Subtotal</span>
-                  <span className="font-bold text-stone-900">${subtotal.toFixed(2)}</span>
+                  <span className="font-bold text-stone-900 dark:text-stone-100">${subtotal.toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between text-stone-600">
+                <div className="flex justify-between text-stone-600 dark:text-stone-400">
                   <span>Tax (10%)</span>
-                  <span className="font-bold text-stone-900">${tax.toFixed(2)}</span>
+                  <span className="font-bold text-stone-900 dark:text-stone-100">${tax.toFixed(2)}</span>
                 </div>
-                <div className="h-px bg-stone-100 my-4"></div>
-                <div className="flex justify-between text-xl font-bold text-stone-900">
+                <div className="h-px bg-stone-100 dark:bg-stone-800 my-4"></div>
+                <div className="flex justify-between text-xl font-bold text-stone-900 dark:text-stone-100">
                   <span>Total</span>
                   <span className="text-amber-600">${total.toFixed(2)}</span>
                 </div>
