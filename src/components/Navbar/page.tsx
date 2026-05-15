@@ -29,7 +29,7 @@ export default function Navbar() {
   }, []);
 
   const isActive = (path: string) =>
-    location.pathname === path ? 'text-amber-600 font-bold' : 'text-stone-600';
+    location.pathname === path ? 'text-accent font-bold' : 'text-secondary';
 
   const primaryLinks = [
     { name: 'Home', path: '/' },
@@ -50,11 +50,11 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md border-b border-stone-200 dark:border-stone-800 transition-colors duration-500">
+    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border-dim transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Left: Logo */}
-          <Link to="/" className="flex items-center gap-2 text-2xl font-serif font-bold text-amber-700 dark:text-amber-500">
+          <Link to="/" className="flex items-center gap-2 text-2xl font-serif font-bold text-accent">
             <span className="text-3xl">🍽</span>
             <span className="hidden sm:inline">La Bella Cucina</span>
           </Link>
@@ -66,7 +66,7 @@ export default function Navbar() {
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className={`text-sm uppercase tracking-widest transition-colors hover:text-amber-600 font-semibold ${isActive(link.path)}`}
+                    className={`text-sm uppercase tracking-widest transition-colors hover:text-accent font-semibold ${isActive(link.path)}`}
                   >
                     {link.name}
                   </Link>
@@ -77,7 +77,7 @@ export default function Navbar() {
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="flex items-center gap-2 text-sm uppercase tracking-widest text-stone-600 dark:text-stone-400 hover:text-amber-600 font-bold transition-all focus:outline-none"
+                className="flex items-center gap-2 text-sm uppercase tracking-widest text-secondary hover:text-accent font-bold transition-all focus:outline-none"
               >
                 More 
                 <svg className={`w-4 h-4 transition-transform duration-300 ${dropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -86,7 +86,7 @@ export default function Navbar() {
               </button>
 
               {dropdownOpen && (
-                <div className="absolute right-0 mt-6 w-64 bg-white dark:bg-stone-900 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-stone-100 dark:border-stone-800 py-6 px-2 animate-zoom-in">
+                <div className="absolute right-0 mt-6 w-64 bg-background rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-border-dim py-6 px-2 animate-zoom-in">
                   <div className="space-y-6">
                     {secondaryLinks.map((cat, i) => (
                       <div key={i} className="space-y-2">
@@ -97,7 +97,7 @@ export default function Navbar() {
                               key={link.path}
                               to={link.path}
                               onClick={() => setDropdownOpen(false)}
-                              className={`flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-stone-50 dark:hover:bg-stone-800 transition-all ${isActive(link.path)}`}
+                              className={`flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-surface transition-all ${isActive(link.path)}`}
                             >
                               <span className="text-base">{link.icon}</span>
                               <span className="text-sm font-semibold">{link.name}</span>
@@ -117,7 +117,7 @@ export default function Navbar() {
             {/* Cart Toggle */}
             <Link 
               to="/cart"
-              className="p-3 rounded-2xl bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-200 hover:ring-2 hover:ring-amber-500 transition-all relative group"
+              className="p-3 rounded-2xl bg-surface text-primary hover:ring-2 hover:ring-accent transition-all relative group"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -128,7 +128,7 @@ export default function Navbar() {
             {/* Login Button */}
             <Link 
               to="/login" 
-              className="bg-amber-600 hover:bg-amber-700 text-white px-7 py-3 rounded-2xl text-sm font-bold shadow-lg shadow-amber-900/20 transition-all active:scale-95 ml-2"
+              className="bg-accent hover:bg-accent/90 text-white px-7 py-3 rounded-2xl text-sm font-bold shadow-lg shadow-amber-900/20 transition-all active:scale-95 ml-2"
             >
               Login
             </Link>
@@ -136,7 +136,7 @@ export default function Navbar() {
             {/* Theme Toggle */}
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-3 rounded-2xl bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-200 transition-all hover:ring-2 hover:ring-amber-500 ml-1"
+              className="p-3 rounded-2xl bg-surface text-primary transition-all hover:ring-2 hover:ring-accent ml-1"
             >
               {theme === 'dark' ? '☀️' : '🌙'}
             </button>
@@ -144,19 +144,19 @@ export default function Navbar() {
 
           {/* Mobile Buttons */}
           <div className="lg:hidden flex items-center gap-2">
-            <Link to="/cart" className="p-2 rounded-xl bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-200">
+            <Link to="/cart" className="p-2 rounded-xl bg-surface text-primary">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
             </Link>
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              className="p-2 rounded-xl bg-stone-100 dark:bg-stone-800 text-stone-800 dark:text-stone-200"
+              className="p-2 rounded-xl bg-surface text-primary"
             >
               {theme === 'dark' ? '☀️' : '🌙'}
             </button>
             <button
-              className="p-2 text-stone-600 dark:text-stone-400"
+              className="p-2 text-secondary"
               onClick={() => setMenuOpen(!menuOpen)}
             >
               {menuOpen ? (
@@ -171,7 +171,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-white dark:bg-stone-950 border-b border-stone-200 dark:border-stone-800 py-8 px-6 animate-fade-in overflow-y-auto max-h-[85vh]">
+        <div className="lg:hidden bg-background border-b border-border-dim py-8 px-6 animate-fade-in overflow-y-auto max-h-[85vh]">
           <div className="space-y-8">
             <div className="grid grid-cols-2 gap-4">
               {primaryLinks.map((link) => (
@@ -179,7 +179,7 @@ export default function Navbar() {
                   key={link.path}
                   to={link.path}
                   onClick={() => setMenuOpen(false)}
-                  className={`flex flex-col items-center justify-center p-6 rounded-3xl bg-stone-50 dark:bg-stone-900 border border-stone-100 dark:border-stone-800 ${isActive(link.path)}`}
+                  className={`flex flex-col items-center justify-center p-6 rounded-3xl bg-surface border border-border-dim ${isActive(link.path)}`}
                 >
                   <span className="text-lg font-bold">{link.name}</span>
                 </Link>
@@ -188,14 +188,14 @@ export default function Navbar() {
             
             {secondaryLinks.map((cat, i) => (
               <div key={i} className="space-y-4">
-                <h3 className="text-xs font-bold text-stone-400 uppercase tracking-widest ml-2">{cat.title}</h3>
+                <h3 className="text-xs font-bold text-secondary uppercase tracking-widest ml-2">{cat.title}</h3>
                 <div className="grid grid-cols-1 gap-2">
                   {cat.links.map((link) => (
                     <Link
                       key={link.path}
                       to={link.path}
                       onClick={() => setMenuOpen(false)}
-                      className={`flex items-center gap-4 p-4 rounded-2xl bg-stone-50 dark:bg-stone-900 ${isActive(link.path)}`}
+                      className={`flex items-center gap-4 p-4 rounded-2xl bg-surface ${isActive(link.path)}`}
                     >
                       <span className="text-2xl">{link.icon}</span>
                       <span className="text-lg font-bold">{link.name}</span>
@@ -206,9 +206,8 @@ export default function Navbar() {
             ))}
 
             <div className="flex flex-col gap-4 pt-4">
-              <Link to="/login" onClick={() => setMenuOpen(false)} className="bg-amber-600 text-white text-center py-5 rounded-3xl font-bold shadow-2xl shadow-amber-900/30">Login</Link>
-              <p className="text-center text-xs text-stone-400 uppercase font-bold tracking-widest">
-                No account? <Link to="/register" onClick={() => setMenuOpen(false)} className="text-amber-600 underline">Register Now</Link>
+              <p className="text-center text-xs text-secondary uppercase font-bold tracking-widest">
+                No account? <Link to="/register" onClick={() => setMenuOpen(false)} className="text-accent underline">Register Now</Link>
               </p>
             </div>
           </div>

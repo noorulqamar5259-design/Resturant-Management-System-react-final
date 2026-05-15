@@ -29,15 +29,15 @@ export default function Gallery() {
   );
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 transition-colors duration-500">
+    <div className="min-h-screen bg-background transition-colors duration-500">
       <Navbar />
 
-      <header className="py-24 px-4 bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800 text-center">
+      <header className="py-24 px-4 bg-background border-b border-border-dim text-center">
         <div className="max-w-4xl mx-auto">
           <span className="text-amber-600 font-semibold tracking-widest uppercase text-sm">Visual Journey</span>
-          <h1 className="text-5xl md:text-6xl font-serif font-bold text-stone-900 dark:text-stone-100 mt-4 mb-6">Our Gallery</h1>
+          <h1 className="text-5xl md:text-6xl font-serif font-bold text-primary mt-4 mb-6">Our Gallery</h1>
           <div className="w-24 h-1 bg-amber-600 mx-auto rounded-full mb-8"></div>
-          <p className="text-xl text-stone-600 dark:text-stone-400 max-w-2xl mx-auto leading-relaxed italic">
+          <p className="text-xl text-secondary max-w-2xl mx-auto leading-relaxed italic">
             "Capturing the artistry, the atmosphere, and the authentic spirit of La Bella Cucina."
           </p>
         </div>
@@ -52,8 +52,8 @@ export default function Gallery() {
               onClick={() => setActiveFilter(cat)}
               className={`px-8 py-3 rounded-full font-bold transition-all ${
                 activeFilter === cat
-                  ? 'bg-amber-600 text-white shadow-lg shadow-amber-900/20'
-                  : 'bg-white dark:bg-stone-900 text-stone-600 dark:text-stone-400 border border-stone-200 dark:border-stone-700 hover:bg-stone-50 dark:hover:bg-stone-800'
+                  ? 'bg-accent text-white shadow-lg shadow-amber-900/20'
+                  : 'bg-background text-secondary border border-border-dim hover:bg-surface'
               }`}
             >
               {cat === 'all' ? 'All Photos' : cat === 'food' ? '🍽️ Food' : cat === 'ambiance' ? '🕯️ Ambiance' : '👨‍🍳 Our Team'}
@@ -66,7 +66,7 @@ export default function Gallery() {
           {filtered.map(item => (
             <div
               key={item.id}
-              className="relative group overflow-hidden rounded-3xl cursor-zoom-in border border-stone-200 dark:border-stone-800 break-inside-avoid shadow-lg bg-white dark:bg-stone-900"
+              className="relative group overflow-hidden rounded-3xl cursor-zoom-in border border-border-dim break-inside-avoid shadow-lg bg-background"
               onClick={() => { setLightboxSrc(item.src); setLightboxAlt(item.alt); }}
             >
               <img

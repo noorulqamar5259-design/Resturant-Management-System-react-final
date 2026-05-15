@@ -20,63 +20,63 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 flex flex-col transition-colors duration-500">
+    <div className="min-h-screen bg-background flex flex-col transition-colors duration-500">
       <Navbar />
 
       <main className="flex-1 flex items-center justify-center p-4 py-20">
-        <div className="max-w-md w-full bg-white dark:bg-stone-900 rounded-[3rem] shadow-2xl border border-stone-100 dark:border-stone-800 p-10 md:p-12 relative overflow-hidden">
+        <div className="max-w-md w-full bg-background rounded-[3rem] shadow-2xl border border-border-dim p-10 md:p-12 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-32 h-32 bg-amber-600/10 rounded-bl-full"></div>
           
           <div className="text-center mb-10">
             <span className="text-amber-600 font-bold tracking-widest uppercase text-xs">Join Us Today</span>
-            <h1 className="text-4xl font-serif font-bold text-stone-900 dark:text-stone-100 mt-2">Create Account</h1>
+            <h1 className="text-4xl font-serif font-bold text-primary mt-2">Create Account</h1>
             <div className="w-12 h-1 bg-amber-600 mx-auto rounded-full mt-4"></div>
           </div>
 
           <form onSubmit={handleRegister} className="space-y-5">
             <div className="space-y-2">
-              <label className="text-sm font-bold text-stone-700 dark:text-stone-300 ml-1">Full Name</label>
+              <label className="text-sm font-bold text-primary ml-1">Full Name</label>
               <input
                 type="text"
                 value={formData.name}
                 onChange={(e) => setFormData({...formData, name: e.target.value})}
-                className="w-full px-6 py-4 rounded-2xl bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-stone-100 border-none focus:ring-2 focus:ring-amber-500 transition-all"
+                className="w-full px-6 py-4 rounded-2xl bg-surface text-primary border-none focus:ring-2 focus:ring-accent transition-all"
                 placeholder="John Doe"
                 required
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-bold text-stone-700 dark:text-stone-300 ml-1">Email Address</label>
+              <label className="text-sm font-bold text-primary ml-1">Email Address</label>
               <input
                 type="email"
                 value={formData.email}
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
-                className="w-full px-6 py-4 rounded-2xl bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-stone-100 border-none focus:ring-2 focus:ring-amber-500 transition-all"
+                className="w-full px-6 py-4 rounded-2xl bg-surface text-primary border-none focus:ring-2 focus:ring-accent transition-all"
                 placeholder="email@example.com"
                 required
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-bold text-stone-700 dark:text-stone-300 ml-1">Password</label>
+              <label className="text-sm font-bold text-primary ml-1">Password</label>
               <input
                 type="password"
                 value={formData.password}
                 onChange={(e) => setFormData({...formData, password: e.target.value})}
-                className="w-full px-6 py-4 rounded-2xl bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-stone-100 border-none focus:ring-2 focus:ring-amber-500 transition-all"
+                className="w-full px-6 py-4 rounded-2xl bg-surface text-primary border-none focus:ring-2 focus:ring-accent transition-all"
                 placeholder="••••••••"
                 required
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-bold text-stone-700 dark:text-stone-300 ml-1">Confirm Password</label>
+              <label className="text-sm font-bold text-primary ml-1">Confirm Password</label>
               <input
                 type="password"
                 value={formData.confirmPassword}
                 onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})}
-                className="w-full px-6 py-4 rounded-2xl bg-stone-50 dark:bg-stone-800 text-stone-900 dark:text-stone-100 border-none focus:ring-2 focus:ring-amber-500 transition-all"
+                className="w-full px-6 py-4 rounded-2xl bg-surface text-primary border-none focus:ring-2 focus:ring-accent transition-all"
                 placeholder="••••••••"
                 required
               />
@@ -84,14 +84,14 @@ export default function Register() {
 
             <button
               type="submit"
-              className="w-full py-5 bg-amber-600 hover:bg-amber-700 text-white rounded-2xl font-bold text-lg shadow-xl shadow-amber-900/20 transition-all transform active:scale-95"
+              className="w-full py-5 bg-accent hover:bg-accent/90 text-white rounded-2xl font-bold text-lg shadow-xl shadow-amber-900/20 transition-all transform active:scale-95"
             >
               Sign Up
             </button>
           </form>
 
           <div className="mt-8 text-center">
-            <p className="text-stone-500 text-sm">
+            <p className="text-secondary text-sm">
               Already have an account?{" "}
               <Link to="/login" className="text-amber-600 font-bold hover:underline">Log in</Link>
             </p>

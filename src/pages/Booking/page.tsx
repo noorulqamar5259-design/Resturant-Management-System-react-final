@@ -45,15 +45,15 @@ export default function Booking() {
     'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400';
 
   return (
-    <div className="min-h-screen bg-stone-50 dark:bg-stone-950 flex flex-col transition-colors duration-500">
+    <div className="min-h-screen bg-background flex flex-col transition-colors duration-500">
       <Navbar />
 
-      <header className="py-24 px-4 bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800 text-center">
+      <header className="py-24 px-4 bg-background border-b border-border-dim text-center">
         <div className="max-w-4xl mx-auto">
           <span className="text-amber-600 font-semibold tracking-widest uppercase text-sm">Join Our Table</span>
-          <h1 className="text-5xl md:text-6xl font-serif font-bold text-stone-900 dark:text-stone-100 mt-4 mb-6">Make a Reservation</h1>
+          <h1 className="text-5xl md:text-6xl font-serif font-bold text-primary mt-4 mb-6">Make a Reservation</h1>
           <div className="w-24 h-1 bg-amber-600 mx-auto rounded-full mb-8"></div>
-          <p className="text-xl text-stone-600 dark:text-stone-400 max-w-2xl mx-auto leading-relaxed italic">
+          <p className="text-xl text-secondary max-w-2xl mx-auto leading-relaxed italic">
             "Experience authentic Italian hospitality in the heart of the city."
           </p>
         </div>
@@ -61,57 +61,57 @@ export default function Booking() {
 
       <main className="max-w-7xl mx-auto py-16 px-4">
         <div className="grid gap-12 lg:grid-cols-[1.35fr_0.65fr]">
-          <form onSubmit={handleSubmit} className="space-y-10 bg-white rounded-[2.5rem] p-10 shadow-2xl border border-stone-100">
+          <form onSubmit={handleSubmit} className="space-y-10 bg-background rounded-[2.5rem] p-10 shadow-2xl border border-border-dim">
             <div className="grid gap-6 sm:grid-cols-2">
               <div className="space-y-2">
-                <label className="text-sm font-bold text-stone-700 ml-1">First Name</label>
-                <input value={firstName} onChange={e => setFirstName(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none" placeholder="First name" />
+                <label className="text-sm font-bold text-primary ml-1">First Name</label>
+                <input value={firstName} onChange={e => setFirstName(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-border-dim bg-surface text-primary focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none" placeholder="First name" />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-bold text-stone-700 ml-1">Last Name</label>
-                <input value={lastName} onChange={e => setLastName(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none" placeholder="Last name" />
+                <label className="text-sm font-bold text-primary ml-1">Last Name</label>
+                <input value={lastName} onChange={e => setLastName(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-border-dim bg-surface text-primary focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none" placeholder="Last name" />
               </div>
             </div>
 
             <div className="grid gap-6 sm:grid-cols-2">
               <div className="space-y-2">
-                <label className="text-sm font-bold text-stone-700 ml-1">Email</label>
-                <input type="email" value={email} onChange={e => setEmail(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none" placeholder="you@example.com" />
+                <label className="text-sm font-bold text-primary ml-1">Email</label>
+                <input type="email" value={email} onChange={e => setEmail(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-border-dim bg-surface text-primary focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none" placeholder="you@example.com" />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-bold text-stone-700 ml-1">Phone</label>
-                <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none" placeholder="(123) 456-7890" />
-              </div>
-            </div>
-
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div className="space-y-2">
-                <label className="text-sm font-bold text-stone-700 ml-1">Date</label>
-                <input type="date" value={date} onChange={e => setDate(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-bold text-stone-700 ml-1">Time</label>
-                <input type="time" value={time} onChange={e => setTime(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none" />
+                <label className="text-sm font-bold text-primary ml-1">Phone</label>
+                <input type="tel" value={phone} onChange={e => setPhone(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-border-dim bg-surface text-primary focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none" placeholder="(123) 456-7890" />
               </div>
             </div>
 
             <div className="grid gap-6 sm:grid-cols-2">
               <div className="space-y-2">
-                <label className="text-sm font-bold text-stone-700 ml-1">Guests</label>
-                <input type="number" min="1" value={guests} onChange={e => setGuests(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none" placeholder="Number of guests" />
+                <label className="text-sm font-bold text-primary ml-1">Date</label>
+                <input type="date" value={date} onChange={e => setDate(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-border-dim bg-surface text-primary focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none" />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-bold text-stone-700 ml-1">Occasion</label>
-                <input value={occasion} onChange={e => setOccasion(e.target.value)} className="w-full px-6 py-4 rounded-2xl border border-stone-200 bg-stone-50 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none" placeholder="Anniversary, Birthday, etc." />
+                <label className="text-sm font-bold text-primary ml-1">Time</label>
+                <input type="time" value={time} onChange={e => setTime(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-border-dim bg-surface text-primary focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none" />
+              </div>
+            </div>
+
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-primary ml-1">Guests</label>
+                <input type="number" min="1" value={guests} onChange={e => setGuests(e.target.value)} required className="w-full px-6 py-4 rounded-2xl border border-border-dim bg-surface text-primary focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none" placeholder="Number of guests" />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-primary ml-1">Occasion</label>
+                <input value={occasion} onChange={e => setOccasion(e.target.value)} className="w-full px-6 py-4 rounded-2xl border border-border-dim bg-surface text-primary focus:border-accent focus:ring-2 focus:ring-accent/20 outline-none" placeholder="Anniversary, Birthday, etc." />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-bold text-stone-700 ml-1">Special Requests</label>
-              <textarea value={requests} onChange={e => setRequests(e.target.value)} className="w-full px-6 py-4 rounded-2xl bg-stone-50 border border-stone-200 focus:ring-2 focus:ring-amber-500 h-32 resize-none outline-none" placeholder="Dietary requirements, seating preferences, allergies..." />
+              <label className="text-sm font-bold text-primary ml-1">Special Requests</label>
+              <textarea value={requests} onChange={e => setRequests(e.target.value)} className="w-full px-6 py-4 rounded-2xl bg-surface text-primary border border-border-dim focus:ring-2 focus:ring-accent h-32 resize-none outline-none" placeholder="Dietary requirements, seating preferences, allergies..." />
             </div>
 
-            <button type="submit" className="w-full py-5 bg-amber-600 hover:bg-amber-700 text-white rounded-2xl font-bold text-lg shadow-xl shadow-amber-900/20 transition-all transform active:scale-95">
+            <button type="submit" className="w-full py-5 bg-accent hover:bg-accent/90 text-white rounded-2xl font-bold text-lg shadow-xl shadow-amber-900/20 transition-all transform active:scale-95">
               Confirm Reservation
             </button>
           </form>
@@ -124,14 +124,14 @@ export default function Booking() {
               <p className="text-amber-50 mb-8 relative z-10 leading-relaxed">
                 Planning a larger event? Our private cellar and rooftop terrace are available for groups of 10 to 50 guests.
               </p>
-              <button className="bg-white text-amber-600 px-8 py-3 rounded-full font-bold hover:bg-stone-100 transition-all relative z-10">
+              <button className="bg-background text-accent px-8 py-3 rounded-full font-bold hover:bg-surface transition-all relative z-10">
                 Inquire Now
               </button>
             </div>
 
-            <div className="bg-white p-10 rounded-[2.5rem] border border-stone-100 shadow-xl">
-              <h3 className="text-xl font-bold text-stone-900 mb-6">Reservation Policy</h3>
-              <ul className="space-y-4 text-sm text-stone-600">
+            <div className="bg-background p-10 rounded-[2.5rem] border border-border-dim shadow-xl">
+              <h3 className="text-xl font-bold text-primary mb-6">Reservation Policy</h3>
+              <ul className="space-y-4 text-sm text-secondary">
                 <li className="flex gap-3">
                   <span className="text-amber-600">✓</span>
                   <span>Tables are held for 15 minutes past reservation time.</span>
@@ -153,31 +153,31 @@ export default function Booking() {
         <div className="mt-24">
           <div className="text-center mb-12">
             <span className="text-amber-600 font-semibold tracking-widest uppercase text-sm">Recent Reservations</span>
-            <h2 className="text-4xl font-serif font-bold text-stone-900 mt-3 mb-6">Today's Summary</h2>
+            <h2 className="text-4xl font-serif font-bold text-primary mt-3 mb-6">Today's Summary</h2>
             <div className="w-16 h-1 bg-amber-600 mx-auto rounded-full"></div>
           </div>
 
-          <div className="bg-white rounded-[2.5rem] overflow-hidden border border-stone-100 shadow-2xl">
+          <div className="bg-background rounded-[2.5rem] overflow-hidden border border-border-dim shadow-2xl">
             <div className="overflow-x-auto">
               <table className="w-full text-left">
                 <thead>
-                  <tr className="bg-stone-50 border-b border-stone-100">
-                    <th className="px-8 py-6 text-sm font-bold text-stone-500 uppercase tracking-wider text-center">Guest</th>
-                    <th className="px-8 py-6 text-sm font-bold text-stone-500 uppercase tracking-wider text-center">Date</th>
-                    <th className="px-8 py-6 text-sm font-bold text-stone-500 uppercase tracking-wider text-center">Time</th>
-                    <th className="px-8 py-6 text-sm font-bold text-stone-500 uppercase tracking-wider text-center">Guests</th>
-                    <th className="px-8 py-6 text-sm font-bold text-stone-500 uppercase tracking-wider text-center">Occasion</th>
-                    <th className="px-8 py-6 text-sm font-bold text-stone-500 uppercase tracking-wider text-center">Status</th>
+                  <tr className="bg-surface border-b border-border-dim">
+                    <th className="px-8 py-6 text-sm font-bold text-secondary uppercase tracking-wider text-center">Guest</th>
+                    <th className="px-8 py-6 text-sm font-bold text-secondary uppercase tracking-wider text-center">Date</th>
+                    <th className="px-8 py-6 text-sm font-bold text-secondary uppercase tracking-wider text-center">Time</th>
+                    <th className="px-8 py-6 text-sm font-bold text-secondary uppercase tracking-wider text-center">Guests</th>
+                    <th className="px-8 py-6 text-sm font-bold text-secondary uppercase tracking-wider text-center">Occasion</th>
+                    <th className="px-8 py-6 text-sm font-bold text-secondary uppercase tracking-wider text-center">Status</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-stone-100">
+                <tbody className="divide-y divide-border-dim">
                   {bookings.map((b, i) => (
-                    <tr key={i} className="hover:bg-stone-50 transition-colors">
-                      <td className="px-8 py-5 font-bold text-stone-900 text-center">{b.name}</td>
-                      <td className="px-8 py-5 text-stone-600 text-center">{b.date}</td>
-                      <td className="px-8 py-5 text-stone-600 text-center">{b.time}</td>
-                      <td className="px-8 py-5 text-stone-600 text-center">{b.guests}</td>
-                      <td className="px-8 py-5 text-stone-600 text-center italic">{b.occasion}</td>
+                    <tr key={i} className="hover:bg-surface transition-colors">
+                      <td className="px-8 py-5 font-bold text-primary text-center">{b.name}</td>
+                      <td className="px-8 py-5 text-secondary text-center">{b.date}</td>
+                      <td className="px-8 py-5 text-secondary text-center">{b.time}</td>
+                      <td className="px-8 py-5 text-secondary text-center">{b.guests}</td>
+                      <td className="px-8 py-5 text-secondary text-center italic">{b.occasion}</td>
                       <td className="px-8 py-5 text-center">
                         <span className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider ${badgeClass(b.status)}`}>
                           {b.status}
